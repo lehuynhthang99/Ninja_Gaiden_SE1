@@ -13,5 +13,336 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\DxFramework">
+      <UniqueIdentifier>{34635cd3-9f98-4e98-b931-5729190ee5cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DxFramework">
+      <UniqueIdentifier>{42ebaffb-8006-485c-a283-2b1c207620a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{1b96cfa7-41cf-447d-9f14-7d03b708edb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{cb20c2d0-559b-4ba8-9bec-c4a1b1a53a10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Map">
+      <UniqueIdentifier>{780bd45d-2671-42f8-ab6d-6e9d79f7673f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Ryu">
+      <UniqueIdentifier>{1e950fac-560d-4c3f-b13a-b606095f8ca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Original">
+      <UniqueIdentifier>{63b1d967-fcb4-4575-8c48-167f6bb5ce1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Original\Camera">
+      <UniqueIdentifier>{cccf5238-d88d-4d8d-bf78-1dea649ff5f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Original\Sprite">
+      <UniqueIdentifier>{a6555694-3b9b-41ad-aa92-3434531ed1f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Original\Tiles">
+      <UniqueIdentifier>{eabdea37-238d-4453-b1ca-1f7c1784b258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Original\State">
+      <UniqueIdentifier>{c23f0712-5388-4e65-bc73-42cb2597a3b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SupportFuntion">
+      <UniqueIdentifier>{32e27aa9-ec82-4e1a-a444-fb38177577fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SupportFuntion\Collision">
+      <UniqueIdentifier>{b94420dc-a96e-4866-8cdf-0816cf310598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SupportFuntion\TinyXml">
+      <UniqueIdentifier>{3b363a34-2e67-4085-b9b7-d4ba3dc14670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Map">
+      <UniqueIdentifier>{b55c2e77-33a4-480d-886c-149303782426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Ryu">
+      <UniqueIdentifier>{c2e97413-8a2d-4e01-863f-a48fff49088a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SupportFunction">
+      <UniqueIdentifier>{a0213061-48f1-4fbd-b671-dce274df887f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SupportFunction\Collision">
+      <UniqueIdentifier>{502c6800-aaf3-4bb7-8696-6af17160e079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SupportFunction\TinyXml">
+      <UniqueIdentifier>{5ffefef3-7e4a-4e58-87bc-2c7b4a43c4c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original">
+      <UniqueIdentifier>{58fb6c0c-52b0-4f19-8b7f-e851e45c9e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original\Camera">
+      <UniqueIdentifier>{381cee72-0261-43cc-b663-991a29f0ee68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original\State">
+      <UniqueIdentifier>{d5cdae13-4e4d-4657-a714-eba007c75847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original\Sprite">
+      <UniqueIdentifier>{dc6043e9-858c-4cbc-8650-d8e48f8a150d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original\Tiles">
+      <UniqueIdentifier>{1ad45a5f-ace0-415c-8832-194abc700cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Original\Grid">
+      <UniqueIdentifier>{1406e08b-9f60-4944-a0ba-2b37eb728e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original\Grid">
+      <UniqueIdentifier>{bba883af-e4da-49b3-beef-6257809327e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Enemies">
+      <UniqueIdentifier>{bd2cefaf-8f5e-4f72-b09b-d9f61cee1ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Enemies">
+      <UniqueIdentifier>{5d7f5b4d-a98e-4df2-a4d5-1f21fb14233c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Item">
+      <UniqueIdentifier>{685c0f2a-3138-450f-8836-5d459860f961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item">
+      <UniqueIdentifier>{4dd4a554-1042-4506-9e52-6d3455257852}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="winmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Original\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\SupportFunction\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="dxgraphics.cpp">
+      <Filter>Source Files\DxFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="dxinput.cpp">
+      <Filter>Source Files\DxFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Object\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Ryu.cpp">
+      <Filter>Source Files\Object\Ryu</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Original\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="StandState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Tiles.cpp">
+      <Filter>Source Files\Original\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>Source Files\SupportFunction\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>Source Files\SupportFunction\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>Source Files\SupportFunction\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>Source Files\SupportFunction\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="RunState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="DuckState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\Original\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bird_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Wizard_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="WizardBullet_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files\SupportFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="Gunner_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="GunnerBullet_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBullet_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Sniper_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SniperBullet_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Cat_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Trooper_stage1.cpp">
+      <Filter>Source Files\Object\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ClimbState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Source Files\Original</Filter>
+    </ClCompile>
+    <ClCompile Include="StunState.cpp">
+      <Filter>Source Files\Original\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dxgraphics.h">
+      <Filter>Header Files\DxFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="dxinput.h">
+      <Filter>Header Files\DxFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Original\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\SupportFuntion\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Object\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Ryu.h">
+      <Filter>Header Files\Object\Ryu</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Original\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="StandState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Tiles.h">
+      <Filter>Header Files\Original\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Header Files\SupportFuntion\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Header Files\SupportFuntion\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="RunState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="DuckState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files\Original\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="WizardBullet_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Wizard_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Header Files\SupportFuntion</Filter>
+    </ClInclude>
+    <ClInclude Include="Gunner_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GunnerBullet_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBullet_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Sniper_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SniperBullet_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Trooper_stage1.h">
+      <Filter>Header Files\Object\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ClimbState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Header Files\Original</Filter>
+    </ClInclude>
+    <ClInclude Include="StunState.h">
+      <Filter>Header Files\Original\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,6 +18,89 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AttackState.cpp" />
+    <ClCompile Include="Bird_stage1.cpp" />
+    <ClCompile Include="BossBullet_stage1.cpp" />
+    <ClCompile Include="Boss_stage1.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cat_stage1.cpp" />
+    <ClCompile Include="ClimbState.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="debug.cpp" />
+    <ClCompile Include="DuckState.cpp" />
+    <ClCompile Include="dxgraphics.cpp" />
+    <ClCompile Include="dxinput.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="GunnerBullet_stage1.cpp" />
+    <ClCompile Include="Gunner_stage1.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="JumpState.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="RunState.cpp" />
+    <ClCompile Include="Ryu.cpp" />
+    <ClCompile Include="SniperBullet_stage1.cpp" />
+    <ClCompile Include="Sniper_stage1.cpp" />
+    <ClCompile Include="Soldier_stage1.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StandState.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StunState.cpp" />
+    <ClCompile Include="Tiles.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
+    <ClCompile Include="Trooper_stage1.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="winmain.cpp" />
+    <ClCompile Include="WizardBullet_stage1.cpp" />
+    <ClCompile Include="Wizard_stage1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AttackState.h" />
+    <ClInclude Include="Bird_stage1.h" />
+    <ClInclude Include="BossBullet_stage1.h" />
+    <ClInclude Include="Boss_stage1.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cat_stage1.h" />
+    <ClInclude Include="ClimbState.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="debug.h" />
+    <ClInclude Include="DuckState.h" />
+    <ClInclude Include="dxgraphics.h" />
+    <ClInclude Include="dxinput.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="GunnerBullet_stage1.h" />
+    <ClInclude Include="Gunner_stage1.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="JumpState.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="RunState.h" />
+    <ClInclude Include="Ryu.h" />
+    <ClInclude Include="SniperBullet_stage1.h" />
+    <ClInclude Include="Sniper_stage1.h" />
+    <ClInclude Include="Soldier_stage1.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StandState.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StunState.h" />
+    <ClInclude Include="Tiles.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
+    <ClInclude Include="Trooper_stage1.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WizardBullet_stage1.h" />
+    <ClInclude Include="Wizard_stage1.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4E5945EA-D61C-4299-AAB8-389C4D07B398}</ProjectGuid>
@@ -69,7 +152,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +163,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -114,8 +203,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

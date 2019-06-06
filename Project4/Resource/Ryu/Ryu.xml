@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:efa37e38aa9b29951f45b792267cd946:9e4aa9251ba48621bb4cdc9457e7417d:f91bc5686be084628c5cf79f98417146$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="Ryu.bmp" width="127" height="148">
+    <sprite n="0.bmp" x="1" y="116" w="17" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="1.bmp" x="20" y="116" w="18" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="2.bmp" x="72" y="52" w="40" h="29" pX="0.5" pY="0.5"/>
+    <sprite n="3.bmp" x="75" y="83" w="29" h="29" pX="0.5" pY="0.5"/>
+    <sprite n="4.bmp" x="40" y="116" w="18" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="5.bmp" x="19" y="83" w="26" h="29" pX="0.5" pY="0.5"/>
+    <sprite n="6.bmp" x="47" y="83" w="26" h="29" pX="0.5" pY="0.5"/>
+    <sprite n="7.bmp" x="106" y="83" w="16" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="8.bmp" x="1" y="83" w="16" h="29" pX="0.5" pY="0.5"/>
+    <sprite n="9.bmp" x="84" y="116" w="20" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="10.bmp" x="60" y="116" w="22" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="11.bmp" x="106" y="116" w="20" h="31" pX="0.5" pY="0.5"/>
+    <sprite n="12.bmp" x="1" y="52" w="17" h="24" pX="0.5" pY="0.5"/>
+    <sprite n="13.bmp" x="42" y="26" w="18" h="23" pX="0.5" pY="0.5"/>
+    <sprite n="14.bmp" x="1" y="26" w="39" h="23" pX="0.5" pY="0.5"/>
+    <sprite n="15.bmp" x="85" y="1" w="29" h="23" pX="0.5" pY="0.5"/>
+    <sprite n="16.bmp" x="49" y="1" w="16" h="22" pX="0.5" pY="0.5"/>
+    <sprite n="17.bmp" x="25" y="1" w="22" h="16" pX="0.5" pY="0.5"/>
+    <sprite n="18.bmp" x="67" y="1" w="16" h="22" pX="0.5" pY="0.5"/>
+    <sprite n="19.bmp" x="1" y="1" w="22" h="16" pX="0.5" pY="0.5"/>
+    <sprite n="20.bmp" x="46" y="52" w="24" h="25" pX="0.5" pY="0.5"/>
+    <sprite n="21.bmp" x="62" y="26" w="25" h="24" pX="0.5" pY="0.5"/>
+    <sprite n="22.bmp" x="20" y="52" w="24" h="25" pX="0.5" pY="0.5"/>
+    <sprite n="23.bmp" x="89" y="26" w="25" h="24" pX="0.5" pY="0.5"/>
+</TextureAtlas>

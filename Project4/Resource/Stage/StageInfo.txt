@@ -1,0 +1,22 @@
+3
+map3_1.png
+Map3_1.txt
+25 42
+Walls1.txt
+Enemies1.txt
+Container1.txt
+2048
+map3_2.png
+Map3_2.txt
+25 42
+Walls2.txt
+Enemies2.txt
+Container2.txt
+3072
+map3_3.png
+Map3_3.txt
+25 30
+Walls3.txt
+Enemies3.txt
+Container3.txt
+256

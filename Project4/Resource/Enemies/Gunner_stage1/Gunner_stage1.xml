@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:9897597951993a2aa35449cecf7550eb:1961d4b9605a18572778ded5ad6ae881:d9fed0f69d910e573d1bb98d378e765b$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="Gunner_stage1.bmp" width="93" height="34">
+    <sprite n="0.bmp" x="1" y="1" w="15" h="32"/>
+    <sprite n="1.bmp" x="18" y="1" w="16" h="32"/>
+    <sprite n="2.bmp" x="36" y="1" w="24" h="32"/>
+    <sprite n="3.bmp" x="62" y="1" w="20" h="32"/>
+    <sprite n="4.bmp" x="84" y="1" w="8" h="3"/>
+</TextureAtlas>
