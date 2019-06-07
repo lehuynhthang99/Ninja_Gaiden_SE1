@@ -42,7 +42,6 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="RunState.cpp" />
     <ClCompile Include="Ryu.cpp" />
-    <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="SniperBullet_stage1.cpp" />
     <ClCompile Include="Sniper_stage1.cpp" />
     <ClCompile Include="Soldier_stage1.cpp" />
@@ -86,7 +85,6 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="RunState.h" />
     <ClInclude Include="Ryu.h" />
-    <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="SniperBullet_stage1.h" />
     <ClInclude Include="Sniper_stage1.h" />
     <ClInclude Include="Soldier_stage1.h" />

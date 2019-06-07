@@ -45,7 +45,7 @@ void Sprite::Render(Camera camera)
 	_renderMatrix *= tmp;
 
 	// Scale the sprite.
-	D3DXMatrixScaling(&tmp, SCALEX, SCALEY, 1);
+	D3DXMatrixScaling(&tmp, SCALE, SCALE, SCALE);
 	_renderMatrix *= tmp;
 
 	
@@ -77,7 +77,7 @@ void Sprite::Render(Camera camera, RECT renderRect)
 	_renderMatrix *= tmp;
 
 	// Scale the sprite.
-	D3DXMatrixScaling(&tmp, SCALEX, SCALEY, 1);
+	D3DXMatrixScaling(&tmp, SCALE, SCALE, SCALE);
 	_renderMatrix *= tmp;
 
 	D3DXVECTOR3 center = D3DXVECTOR3((renderRect.right - renderRect.left) / 2.0f, (renderRect.bottom - renderRect.top), 0);
@@ -107,7 +107,7 @@ void Sprite::Render(Camera camera, RECT renderRect, D3DXVECTOR3 center)
 	_renderMatrix *= tmp;
 
 	// Scale the sprite.
-	D3DXMatrixScaling(&tmp, SCALEX, SCALEY, 1);
+	D3DXMatrixScaling(&tmp, SCALE, SCALE, SCALE);
 	_renderMatrix *= tmp;
 
 	spritehandler->SetTransform(&_renderMatrix);
