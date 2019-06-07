@@ -228,6 +228,9 @@
     <ClCompile Include="Container.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreBoard.cpp">
+      <Filter>Source Files\Original</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -343,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="Container.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreBoard.h">
+      <Filter>Header Files\Original</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

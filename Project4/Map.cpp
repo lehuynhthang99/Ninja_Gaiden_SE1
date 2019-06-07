@@ -23,7 +23,7 @@ Map::Map(string mapPath, string imagePath, int x, int y, int Width, int Height, 
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
 			map >> bitmap[i][j];
-	numberBitmapPerRows = SCREEN_WIDTH / (_Width*SCALE) + 2;
+	numberBitmapPerRows = SCREEN_WIDTH / (_Width*SCALEX) + 2;
 	map.close();
 }
 
@@ -39,7 +39,9 @@ void Map::KillSprite()
 
 void Map::Render(Camera camera)
 {
-	D3DXMatrixScaling(&_renderMatrix, SCALE, SCALE, 0);
+	/*D3DXMatrixScaling(&_renderMatrix, SCALEX, SCALEY, 1);*/
+	/*D3DXMatrixIdentity(&_renderMatrix);
+	D3DXMATRIX tmp;*/
 	int start = camera._X / _Width;
 	for (int i = 0; i < rows; i++)
 		for (int j = start; j < start + numberBitmapPerRows; j++)
@@ -47,14 +49,16 @@ void Map::Render(Camera camera)
 			int x = j * _Width;
 			int y = _Height * (rows - i);
 
-			
-
-			//position.y += BLANK_DISTANCE_HEIGHT;
+			D3DXMatrixIdentity(&_renderMatrix);
+			D3DXMATRIX tmp;
 			D3DXVECTOR3 position(x,y,0);
 			position = camera.WorldToView(position);
-			position.x = (int)position.x;
-			position.y = (int)position.y;
-			position.z = (int)position.z;
+
+			D3DXMatrixTranslation(&tmp, position.x, position.y, 0.0f);
+			_renderMatrix *= tmp;
+			D3DXMatrixScaling(&tmp, SCALEX, SCALEY, 1);
+			_renderMatrix *= tmp;
+
 			rect.top = 0;
 			rect.left = _Width * bitmap[i][j];
 			rect.right = rect.left + _Width;

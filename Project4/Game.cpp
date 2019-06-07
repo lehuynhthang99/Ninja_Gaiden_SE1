@@ -18,7 +18,7 @@ Grid grid;
 int Game_Init(HWND hWnd)
 {
 	stage = Stage("Resource/Stage/StageInfo.txt");
-	stage._stage+=2;
+	//stage._stage+=2;
 	Change_Stage();
 	return 1;
 }
@@ -65,7 +65,7 @@ void Game_Run(HWND hWnd)
 
 	for (int i=0; i<enemies.size(); i++)
 	{
-		if (enemies[i]->GetPosX() >= camera._X - 100 && enemies[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALE * 1.0f + 100)
+		if (enemies[i]->GetPosX() >= camera._X - 100 && enemies[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALEX * 1.0f + 100)
 		{
 			if (ryu.GetStateType() == ATTACK_state && !enemies[i]->_isAttacked && enemies[i]->_died == -1)
 			{
@@ -118,7 +118,7 @@ void Game_Run(HWND hWnd)
 	if (ryu.GetStateType() != STUN_state && ryu._invisible == 0)
 		for (int i = 0; i < enemies.size(); i++)
 		{
-			if (enemies[i]->_died == -1 && enemies[i]->GetPosX() >= camera._X && enemies[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALE * 1.0f)
+			if (enemies[i]->_died == -1 && enemies[i]->GetPosX() >= camera._X && enemies[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALEX * 1.0f)
 			{
 				float normalX, normalY;
 				Box tmpBox = ryu.ToBox();
@@ -137,7 +137,7 @@ void Game_Run(HWND hWnd)
 		containers[i]->Update();*/
 	for (int i = 0; i < containers.size(); i++)
 	{
-		if (containers[i]->GetPosX() >= camera._X - 100 && containers[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALE * 1.0f + 100)
+		if (containers[i]->GetPosX() >= camera._X - 100 && containers[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALEX * 1.0f + 100)
 		{
 			if (ryu.GetStateType() == ATTACK_state && !containers[i]->_died)
 			{

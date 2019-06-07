@@ -45,15 +45,15 @@ void Camera::Update(int x)
 	if (Key_Down(DIK_RIGHT))
 		_X += _Speed;*/
 
-	if (x - _X > 1.0f / 2 * (SCREEN_WIDTH / SCALE * 1.0f))
-		_X = x - 1.0f / 2 * (SCREEN_WIDTH / SCALE * 1.0f);
-	if (x - _X < 1.0f / 2 * (SCREEN_WIDTH / SCALE * 1.0f))
-		_X = x - 1.0f / 2 * (SCREEN_WIDTH / SCALE * 1.0f);
+	if (x - _X > 1.0f / 2 * (SCREEN_WIDTH / SCALEX * 1.0f))
+		_X = x - 1.0f / 2 * (SCREEN_WIDTH / SCALEX * 1.0f);
+	if (x - _X < 1.0f / 2 * (SCREEN_WIDTH / SCALEX * 1.0f))
+		_X = x - 1.0f / 2 * (SCREEN_WIDTH / SCALEX * 1.0f);
 
 	if (_X < 0)
 		_X = 0;
-	if (_X > _gameWidth - SCREEN_WIDTH / SCALE)
-		_X = _gameWidth - SCREEN_WIDTH / SCALE;
+	if (_X > _gameWidth - SCREEN_WIDTH / SCALEX)
+		_X = _gameWidth - SCREEN_WIDTH / SCALEX;
 	/*if (_Y < SCREEN_HEIGHT / SCALE)
 		_Y = SCREEN_HEIGHT / SCALE;
 	if (_Y > GAME_HEIGHT)
