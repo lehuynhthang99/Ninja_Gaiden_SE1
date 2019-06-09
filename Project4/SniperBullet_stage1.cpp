@@ -14,6 +14,7 @@ SniperBullet_stage1::SniperBullet_stage1(string Path, int x, int y, int Width, i
 	_vx = FlipX * SNIPER_BULLET_SPEED;
 	sprite.FlipX = FlipX;
 	_curSprite = 2;
+	_score = 100;
 }
 
 void SniperBullet_stage1::UpdateVelocity()

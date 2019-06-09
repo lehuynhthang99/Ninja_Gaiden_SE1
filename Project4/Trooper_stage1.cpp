@@ -16,6 +16,7 @@ Trooper_stage1::Trooper_stage1(string Path, int x, int y, int Width, int Height,
 	_vy = 0;
 	_vx = -TROOPER_STAGE1_SPEED;
 	sprite.FlipX = -1;
+	_score = 300;
 }
 
 void Trooper_stage1::UpdateVelocity()

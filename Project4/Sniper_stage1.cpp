@@ -17,6 +17,7 @@ Sniper_stage1::Sniper_stage1(string Path, int x, int y, int Width, int Height, i
 	_fileName = fileName;
 	RECT recttmp = tiles.getRectLocation(_curSprite);
 	_center = D3DXVECTOR3((recttmp.right - recttmp.left) / 2.0f, (recttmp.bottom - recttmp.top), 0);
+	_score = 200;
 }
 
 void Sniper_stage1::UpdateVelocity(Ryu * ryu)

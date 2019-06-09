@@ -2,7 +2,7 @@
 class RunState;
 typedef class RunState* LPRunState;
 
-#define RYU_SPEED 1
+#define RYU_SPEED 0.8f
 
 #include "State.h"
 class RunState : public State

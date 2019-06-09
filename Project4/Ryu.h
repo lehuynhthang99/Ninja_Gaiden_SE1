@@ -18,6 +18,7 @@ protected:
 	Sprite sprite;
 	float _collisionTime, _normalX, _normalY;
 public:
+	int _lives;
 	int _HP, _MP;
 	bool _died;
 	int _invisible;

@@ -14,6 +14,7 @@ GunnerBullet_stage1::GunnerBullet_stage1(string Path, int x, int y, int Width, i
 	_vx = FlipX * GUNNER_BULLET_SPEED;
 	sprite.FlipX = FlipX;
 	_curSprite = 4;
+	_score = 100;
 }
 
 void GunnerBullet_stage1::UpdateVelocity()

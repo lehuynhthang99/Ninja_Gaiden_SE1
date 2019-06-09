@@ -26,6 +26,7 @@
 #include "Trooper_stage1.h"
 #include "Stage.h"
 #include "Container.h"
+#include "ScoreBoard.h"
 
 using namespace std;
 

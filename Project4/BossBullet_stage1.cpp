@@ -14,6 +14,7 @@ BossBullet_stage1::BossBullet_stage1(string Path, int x, int y, int Width, int H
 	_vx = FlipX * BOSS_BULLET_SPEED;
 	sprite.FlipX = FlipX;
 	_curSprite = 2;
+	_score = 100;
 }
 
 void BossBullet_stage1::UpdateVelocity()

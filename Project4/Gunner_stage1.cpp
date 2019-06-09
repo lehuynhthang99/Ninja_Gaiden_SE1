@@ -19,6 +19,7 @@ Gunner_stage1::Gunner_stage1(string Path, int x, int y, int Width, int Height, i
 	_bulletAdd = false;
 	_Path = Path;
 	_fileName = fileName;
+	_score = 200;
 }
 
 void Gunner_stage1::UpdateVelocity(Ryu * ryu)

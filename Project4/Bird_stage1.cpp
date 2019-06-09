@@ -14,6 +14,7 @@ Bird_stage1::Bird_stage1(string Path, int x, int y, int Width, int Height, int f
 	_vx = _vy = 0;
 	_speedX = -0.025;
 	_directionX = -1;
+	_score = 300;
 }
 
 void Bird_stage1::UpdateVelocity(Ryu* ryu)

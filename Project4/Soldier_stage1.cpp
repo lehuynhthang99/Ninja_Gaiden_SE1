@@ -16,6 +16,7 @@ Soldier_stage1::Soldier_stage1(string Path, int x, int y, int Width, int Height,
 	_vy = 0;
 	_vx = -SOLDIER_STAGE1_SPEED;
 	sprite.FlipX = -1;
+	_score = 100;
 }
 
 

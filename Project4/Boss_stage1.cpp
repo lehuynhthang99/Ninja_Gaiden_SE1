@@ -21,6 +21,7 @@ Boss_stage1::Boss_stage1(string Path, int x, int y, int Width, int Height, int f
 	_shoot = false;
 	_startPos = y;
 	_HP = 16;
+	_score = 10000;
 }
 
 void Boss_stage1::UpdateVelocity(Ryu * ryu)

@@ -8,7 +8,7 @@ using namespace std;
 enum ItemDefine
 {
 	LiveUp = 1,
-	PtsBunus_A = 2,
+	PtsBonus_A = 2,
 	PtsBonus_B = 3,
 	HPRecover = 4,
 	MPRecover_A = 5,
@@ -27,7 +27,9 @@ protected:
 	Sprite sprite;
 	float _countDelay;
 public:
+	int _activate;
 	ItemDefine _id;
+	bool _died;
 	Item();
 	Item(ItemDefine id, float x, float y, int CountDelay);
 
@@ -35,6 +37,8 @@ public:
 	void ItemDelete();
 	void Render(Camera camera);
 	Box ToBox();
+
+	float GetPosX();
 
 	virtual ~Item();
 };

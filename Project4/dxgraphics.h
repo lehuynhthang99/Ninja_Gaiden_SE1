@@ -10,14 +10,14 @@
 
 using namespace std;
 
-#define GAME_WIDTH 256
+#define GAME_WIDTH 240
 #define GAME_HEIGHT 176
 
 #define SCALE 1
 
 #define FULLSCREEN 0
-#define SCREEN_WIDTH 256
-#define SCREEN_HEIGHT (GAME_HEIGHT + 50)*SCALE	
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT (GAME_HEIGHT + 40)*SCALE	
 
 #define BLANK_DISTANCE_WIDTH 0
 #define BLANK_DISTANCE_HEIGHT 0

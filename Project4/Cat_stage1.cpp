@@ -16,6 +16,7 @@ Cat_stage1::Cat_stage1(string Path, int x, int y, int Width, int Height, int fra
 	_vy = 0;
 	_vx = -CAT_STAGE1_SPEED;
 	sprite.FlipX = -1;
+	_score = 200;
 }
 
 void Cat_stage1::UpdateVelocity()

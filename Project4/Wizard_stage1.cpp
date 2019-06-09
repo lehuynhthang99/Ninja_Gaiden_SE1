@@ -19,6 +19,7 @@ Wizard_stage1::Wizard_stage1(string Path, int x, int y, int Width, int Height, i
 	_bulletAdd = false;
 	_Path = Path;
 	_fileName = fileName;
+	_score = 300;
 }
 
 void Wizard_stage1::UpdateVelocity(Ryu * ryu)

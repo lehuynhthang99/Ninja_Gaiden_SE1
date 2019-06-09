@@ -17,6 +17,8 @@ Item::Item(ItemDefine id, float x, float y, int CountDelay)
 	sprite = Sprite(tmpPath, x, y, info.Width, info.Height, 1, 10);
 	_countDelay = CountDelay;
 	_id = id;
+	_died = false;
+	_activate = 10;
 }
 
 void Item::Update()
@@ -25,6 +27,8 @@ void Item::Update()
 	{
 		sprite._Y -= 0.5f;
 		_countDelay -= 0.5f;
+		if (_activate > 0)
+			_activate--;
 	}
 }
 
@@ -47,6 +51,11 @@ Box Item::ToBox()
 	tmp.width = sprite.GetWidth();
 	tmp.height = sprite.GetHeight();
 	return tmp;
+}
+
+float Item::GetPosX()
+{
+	return sprite._X;
 }
 
 Item::~Item()

@@ -34,6 +34,7 @@ protected:
 	float _rangeXstart, _rangeXend;
 	
 public:
+	int _score;
 	bool _isAttacked;
 	int _died;
 	EnemyDefine _type;

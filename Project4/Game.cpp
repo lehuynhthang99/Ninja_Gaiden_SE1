@@ -4,6 +4,7 @@ Camera camera;
 Map map;
 Ryu ryu;
 Stage stage;
+ScoreBoard scoreBoard;
 
 Wall *walls;
 int wallsNum;
@@ -13,12 +14,14 @@ vector<LPContainer> containers;
 vector<LPItem> items;
 
 Grid grid;
+float _timer;
 
 
 int Game_Init(HWND hWnd)
 {
 	stage = Stage("Resource/Stage/StageInfo.txt");
-	stage._stage+=2;
+	scoreBoard = ScoreBoard("Resource/ScoreBoard/ascii_8x8.bmp");
+	//stage._stage+=2;
 	Change_Stage();
 	return 1;
 }
@@ -62,7 +65,6 @@ void Game_Run(HWND hWnd)
 	}
 
 	// Enemy
-
 	for (int i=0; i<enemies.size(); i++)
 	{
 		if (enemies[i]->GetPosX() >= camera._X - 100 && enemies[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALE * 1.0f + 100)
@@ -74,22 +76,24 @@ void Game_Run(HWND hWnd)
 				Box enemyBox = enemies[i]->ToBox();
 				float tmpcollision = SweptAABB(tmpSwordBox, enemyBox, normalX, normalY);
 				/*DebugOut((wchar_t*)L"tmpColli: %f %f %f\n", tmpcollision, normalX, normalY);
-				DebugOut((wchar_t*)L"tmpSwordBox: %f %f %f %f %f %f\n", 
+				DebugOut((wchar_t*)L"tmpSwordBox: %f %f %f %f %f %f\n",
 					tmpSwordBox.x, tmpSwordBox.y, tmpSwordBox.vx, tmpSwordBox.vy, tmpSwordBox.width, tmpSwordBox.height);
 				DebugOut((wchar_t*)L"enemyBox: %d %f %f %f %f %f %f\n",
 					enemies[i]->_type, enemyBox.x, enemyBox.y, enemyBox.vx, enemyBox.vy, enemyBox.width, enemyBox.height);*/
-				if (enemies[i]->_type == SNIPERBULLET_stage1)
+				/*if (enemies[i]->_type == SNIPERBULLET_stage1)
 				{
 					DebugOut((wchar_t*)L"tmpColli: %f %f %f\n", tmpcollision, normalX, normalY);
 					DebugOut((wchar_t*)L"tmpSwordBox: %f %f %f %f %f %f\n",
 						tmpSwordBox.x, tmpSwordBox.y, tmpSwordBox.vx, tmpSwordBox.vy, tmpSwordBox.width, tmpSwordBox.height);
 					DebugOut((wchar_t*)L"enemyBox: %d %f %f %f %f %f %f\n\n",
 						enemies[i]->_type, enemyBox.x, enemyBox.y, enemyBox.vx, enemyBox.vy, enemyBox.width, enemyBox.height);
-				}
+				}*/
 				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
 				{
 					enemies[i]->_isAttacked = true;
 					enemies[i]->_HP--;
+					if (enemies[i]->_type == BOSS_stage1)
+						scoreBoard._bossHP--;
 					continue;
 				}
 			}
@@ -107,6 +111,7 @@ void Game_Run(HWND hWnd)
 	{
 		if (enemies[i]->_died == 0)
 		{
+			scoreBoard._score += enemies[i]->_score;
 			enemies[i]->EnemyDelete();
 			delete enemies[i];
 			enemies.erase(enemies.begin() + i);
@@ -177,9 +182,65 @@ void Game_Run(HWND hWnd)
 	//Item
 	for (int i = 0; i < items.size(); i++)
 		items[i]->Update();
+	for (int i = 0; i < items.size(); i++)
+	{
+		if (items[i]->_activate == 0 && items[i]->GetPosX() >= camera._X - 100 && items[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALE * 1.0f + 100)
+		{
+			float normalX, normalY;
+			Box tmpRyuBox = ryu.ToBox();
+			Box itemsBox = items[i]->ToBox();
+			if (OverlappedBox(tmpRyuBox, itemsBox))
+			{
+				switch (items[i]->_id)
+				{
+				case LiveUp:
+					ryu._lives++;
+					break;
+				case PtsBonus_A:
+					scoreBoard._score += 500;
+					break;
+				case PtsBonus_B:
+					scoreBoard._score += 1000;
+					break;
+				case HPRecover:
+					ryu._HP = 16;
+					break;
+				case MPRecover_A:
+					ryu._MP += 5;
+					break;
+				case MPRecover_B:
+					ryu._MP += 10;
+					break;
+				case Dart_A:
+					break;
+				case Dart_B:
+					break;
+				case TimeStop:
+					break;
+				default:
+					break;
+				}
+				items[i]->_died = true;
+			}
+		}
+	}
+	i = 0;
+	while (i < items.size())
+	{
+		if (items[i]->_died)
+		{
+			items[i]->ItemDelete();
+			delete items[i];
+			items.erase(items.begin() + i);
+		}
+		else i++;
+	}
 
 	//camera
 	camera.Update(ryu.GetPosX());
+
+	//ScoreBoard
+	scoreBoard.Update(stage._stage, _timer, ryu._lives, ryu._MP);
 
 	//start render
 	if (d3ddev == NULL)
@@ -203,6 +264,8 @@ void Game_Run(HWND hWnd)
 
 		for (int i = 0; i < items.size(); i++)
 			items[i]->Render(camera);
+
+		scoreBoard.Render(camera, ryu._HP);
 
 		spritehandler->End();
 

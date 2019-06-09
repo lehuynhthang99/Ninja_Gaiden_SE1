@@ -22,6 +22,8 @@ Ryu::Ryu(string Path, int x, int y, int Width, int Height, int frameNumber, int 
 	_invisible = 0;
 	_specialChange = NONE;
 	_HP = 16;
+	_MP = 0;
+	_lives = 2;
 }
 
 void Ryu::ChangeState()
@@ -35,6 +37,10 @@ void Ryu::ChangeState()
 		delete state;
 		state = new StunState(16, 16, sprite.FlipX);
 		_specialChange = NONE;
+		return;
+	case STAND_State:
+		delete state;
+		state = new StandState(0, 0);
 		return;
 	default:
 		break;

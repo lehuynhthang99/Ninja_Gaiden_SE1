@@ -15,6 +15,7 @@ Enemy::Enemy(string Path, int x, int y, int Width, int Height, int frameNumber, 
 	_died = -1;
 	_HP = 1;
 	_isAttacked = false;
+	_score = 0;
 }
 
 void Enemy::UpdateVelocity()

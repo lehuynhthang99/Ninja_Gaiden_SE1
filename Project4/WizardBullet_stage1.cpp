@@ -16,6 +16,7 @@ WizardBullet_stage1::WizardBullet_stage1(string Path, int x, int y, int Width, i
 	_curSprite = 3;
 	RECT recttmp = tiles.getRectLocation(_curSprite);
 	_center = D3DXVECTOR3((recttmp.right - recttmp.left) / 2.0f, (recttmp.bottom - recttmp.top) / 2.0f, 0);
+	_score = 100;
 }
 
 void WizardBullet_stage1::UpdateVelocity()
