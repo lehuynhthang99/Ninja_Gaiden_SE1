@@ -40,6 +40,10 @@ void Game_Run(HWND hWnd)
 	if (_timeStop > 0)
 		_timeStop -= 0.01f;
 
+	//TimeOut
+	if (scoreBoard._timer <= 0)
+		ryu._died = true;
+
 	//Ryu
 	if (!ryu._died) 
 	{
@@ -65,9 +69,18 @@ void Game_Run(HWND hWnd)
 	}
 	else 
 	{
-		stage._stage--;
-		Change_Stage();
-		return;
+		if (ryu._lives > 0)
+		{
+			stage._stage--;
+			Change_Stage();
+			return;
+		}
+		else 
+		{
+			stage._stage = 0;
+			Change_Stage();
+			return;
+		}
 	}
 
 	// Enemy
@@ -292,7 +305,7 @@ void Game_Run(HWND hWnd)
 		for (int i = 0; i < items.size(); i++)
 			items[i]->Render(camera);
 
-		scoreBoard.Render(camera, ryu._HP);
+		scoreBoard.Render(camera, ryu._HP, ryu._skillType);
 
 		spritehandler->End();
 
@@ -349,8 +362,6 @@ void Change_Stage()
 	//clear
 	map.KillSprite();
 
-	
-
 	for (int i = 0; i < enemies.size(); i++)
 	{
 		enemies[i]->EnemyDelete();
@@ -396,12 +407,20 @@ void Change_Stage()
 	camera = Camera(stage._gameWidth[stage._stage]);
 
 	//Ryu
-	if (ryu._died)
+	/*if (ryu._died)
 	{
 		ryu.Remove(); 
 		ryu = Ryu("Resource/Ryu/Ryu.bmp", stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y, NULL, NULL, 24, 10, "Resource/Ryu/Ryu.xml");
 	}
-	else ryu.SetStartPos(stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y);
+	else ryu.SetStartPos(stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y);*/
+	if (ryu._lives == 0 && ryu._died)
+	{
+		ryu.Remove();
+		ryu = Ryu("Resource/Ryu/Ryu.bmp", stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y, NULL, NULL, 24, 10, "Resource/Ryu/Ryu.xml");
+		scoreBoard.ScoreBoardDelete();
+		scoreBoard = ScoreBoard("Resource/ScoreBoard/ascii_8x8.bmp");
+	} 
+	else ryu.ChangeStage(stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y);
 
 	//Walls
 	string tmpWallTxtStr = "Resource/Walls/";

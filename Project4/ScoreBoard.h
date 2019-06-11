@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Sprite.h"
+#include "Skill.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ using namespace std;
 class ScoreBoard
 {
 protected:
-	Sprite sprite;
+	Sprite sprite, DartA, DartB;
 	string stringLine[3];
 	RECT chaRect[256];
 public:
@@ -22,7 +23,7 @@ public:
 
 
 	void Update(int Stage, int lives, int RyuMP, bool TimeStop);
-	void Render(Camera camera, int RyuHP);
+	void Render(Camera camera, int RyuHP, SkillDefine skillType);
 	void ScoreBoardDelete();
 
 };

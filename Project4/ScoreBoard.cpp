@@ -24,6 +24,8 @@ ScoreBoard::ScoreBoard(string Path)
 		chaRect[i].bottom = chaRect[i].top + 8;
 	}
 	_bossHP = 16;
+	DartA = Sprite("Resource/ScoreBoard/DartA.bmp", 90, 135, 20, 20, 1, 0);
+	DartB = Sprite("Resource/ScoreBoard/DartB.bmp", 90, 135, 20, 20, 1, 0);
 }
 
 void ScoreBoard::Update(int Stage, int lives, int RyuMP, bool TimeStop)
@@ -38,7 +40,7 @@ void ScoreBoard::Update(int Stage, int lives, int RyuMP, bool TimeStop)
 	stringLine[2] = scoreLine;
 }
 
-void ScoreBoard::Render(Camera camera, int RyuHP)
+void ScoreBoard::Render(Camera camera, int RyuHP, SkillDefine skillType)
 {
 	D3DXVECTOR2 origin = D3DXVECTOR2(camera._X + 10, camera._Y - 15);
 	D3DXVECTOR2 tmpPos = origin;
@@ -85,10 +87,24 @@ void ScoreBoard::Render(Camera camera, int RyuHP)
 		else
 			sprite.Render(camera, chaRect[22], D3DXVECTOR3(0, 0, 0));
 	}
+	if (skillType == DartA_skill)
+	{
+		DartA._X = camera._X + 90;
+		DartA._Y = camera._Y - 35;
+		DartA.Render(camera, DartA.rect);
+	}
+	if (skillType == DartB_skill)
+	{
+		DartB._X = camera._X + 90;
+		DartB._Y = camera._Y - 35;
+		DartB.Render(camera, DartB.rect);
+	}
 }
 
 
 void ScoreBoard::ScoreBoardDelete()
 {
 	sprite.KillSprite();
+	DartA.KillSprite();
+	DartB.KillSprite();
 }

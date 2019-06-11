@@ -23,7 +23,6 @@ protected:
 	LPState state;
 	Tiles tiles;
 	Sprite sprite;
-	float _collisionTime, _normalX, _normalY;
 public:
 	SkillDefine _skillType;
 	int _lives;
@@ -43,7 +42,7 @@ public:
 	void Update();
 
 	void Render(Camera camera);
-	void SetStartPos(float x, float y);
+	void ChangeStage(float x, float y);
 
 	Box ToBox();
 

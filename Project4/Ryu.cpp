@@ -19,7 +19,6 @@ Ryu::Ryu(string Path, int x, int y, int Width, int Height, int frameNumber, int 
 	sprite = Sprite(Path, x, y, Width, Height, frameNumber, animDelay);
 	tiles = Tiles(fileName, frameNumber);
 	state = new StandState(0, 0);
-	_normalX = _normalY = 0;
 	_died = false;
 	_invisible = 0;
 	_specialChange = NONE;
@@ -110,7 +109,7 @@ void Ryu::ChangeState()
 				if (_MP >= 5)
 				{
 					_MP -= 5;
-					skill = new DartB("Resource/DartB/DartB.bmp", sprite._X, sprite._Y + 12, 18, 18, 2, 6, "Resource/DartB/DartB.xml", &sprite);
+					skill = new DartB("Resource/DartB/DartB.bmp", sprite._X, sprite._Y + 12, 18, 18, 2, 4, "Resource/DartB/DartB.xml", &sprite);
 				}
 				break;
 			default:
@@ -128,7 +127,6 @@ void Ryu::UpdateState()
 {
 	ChangeState();
 	state->UpdateVelocity(&sprite);
-	_collisionTime = 1;
 }
 
 void Ryu::UpdateCollision(Wall* wall)
@@ -166,11 +164,26 @@ void Ryu::Render(Camera camera)
 		skill->Render(camera);
 }
 
-void Ryu::SetStartPos(float x, float y)
+void Ryu::ChangeStage(float x, float y)
 {
 	sprite._X = x;
 	sprite._Y = y;
 	sprite.FlipX = 1;
+	if (state)
+		delete state;
+	state = new StandState(0, 0);
+	if (skill)
+		delete skill;
+	skill = NULL;
+	if (_died)
+	{
+		_skillType = NO_skill;
+		_died = false;
+		_invisible = 0;
+		_specialChange = NONE;
+		_HP = 16;
+		_lives--;
+	}
 }
 
 Box Ryu::ToBox()
@@ -203,6 +216,7 @@ void Ryu::Remove()
 	{
 		skill->SkillDelete();
 		delete skill;
+		skill = NULL;
 	}
 }
 
