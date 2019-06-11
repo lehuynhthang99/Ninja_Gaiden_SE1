@@ -5,7 +5,7 @@
 Grid::Grid()
 {
 	_cellRows = 8;
-	_cellCols = 73;
+	_cellCols = 74;
 
 	Wall_Cells = new vector<Wall*>*[_cellRows];
 	for (int i = 0; i < _cellRows; i++)

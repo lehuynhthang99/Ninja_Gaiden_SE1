@@ -13,6 +13,7 @@ ScoreBoard::~ScoreBoard()
 
 ScoreBoard::ScoreBoard(string Path)
 {
+	_timer = 150;
 	_score = 0;
 	sprite = Sprite(Path, 0, 0, 8, 8, 256, 0);
 	for (int i = 0; i < 256; i++)
@@ -25,12 +26,13 @@ ScoreBoard::ScoreBoard(string Path)
 	_bossHP = 16;
 }
 
-void ScoreBoard::Update(int Stage, float Timer, int lives, int RyuMP)
+void ScoreBoard::Update(int Stage, int lives, int RyuMP, bool TimeStop)
 {
+	_timer -= 0.01f;
 	char scoreLine[30];
 	sprintf_s(scoreLine, "SCORE-%06d STAGE-3-%d", _score, Stage);
 	stringLine[0] = scoreLine;
-	sprintf_s(scoreLine, "TIMER-%03d    NINJA-", (int)Timer);
+	sprintf_s(scoreLine, "TIMER-%03d    NINJA-", (int)ceil(_timer));
 	stringLine[1] = scoreLine;
 	sprintf_s(scoreLine, "P-%02d  -%02d    ENEMY-", lives, RyuMP);
 	stringLine[2] = scoreLine;

@@ -1,5 +1,8 @@
 #pragma once
 
+class Ryu;
+typedef class Ryu* LPRyu;
+
 #include "StandState.h"
 #include "RunState.h"
 #include "DuckState.h"
@@ -9,15 +12,20 @@
 #include "Wall.h"
 #include "ClimbState.h"
 #include "StunState.h"
+#include "SkillState.h"
+#include "DartA.h"
+#include "DartB.h"
 
 class Ryu
 {
 protected:
+	LPSkill skill;
 	LPState state;
 	Tiles tiles;
 	Sprite sprite;
 	float _collisionTime, _normalX, _normalY;
 public:
+	SkillDefine _skillType;
 	int _lives;
 	int _HP, _MP;
 	bool _died;
@@ -42,6 +50,8 @@ public:
 	float GetPosX();
 	void Remove();
 	StateDefine GetStateType();
+	LPSprite GetSprite();
 	Box ToBoxSword();
+	Box ToSkillBox();
 };
 

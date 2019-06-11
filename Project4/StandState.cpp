@@ -28,6 +28,14 @@ int StandState::HandleInput(StateInfo *info)
 		return RUN_State;
 	}
 
+	//Skill
+	if (Key_Down(DIK_Z))
+	{
+		info->frameToDraw.x = 4;
+		info->frameToDraw.y = 6;
+		return SKILL_state;
+	}
+
 	//Duck
 	if (Key_Down(DIK_DOWN))
 	{

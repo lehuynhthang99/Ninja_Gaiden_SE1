@@ -30,6 +30,14 @@ int JumpState::HandleInput(StateInfo *info)
 		return STAND_State;
 	}
 
+	//Skill
+	if (Key_Down(DIK_Z))
+	{
+		info->frameToDraw.x = 4;
+		info->frameToDraw.y = 6;
+		return SKILL_state;
+	}
+
 	//Climb
 	if (changeTo == CLIMB_state)
 	{

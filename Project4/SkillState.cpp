@@ -1,20 +1,20 @@
-#include "AttackState.h"
+#include "SkillState.h"
 
 
 
-AttackState::AttackState()
+SkillState::SkillState()
 {
 }
 
 
-AttackState::~AttackState()
+SkillState::~SkillState()
 {
 }
 
-AttackState::AttackState(int beginSprite, int EndSprite, StateDefine prevState, float vx, float vy)
+SkillState::SkillState(int beginSprite, int EndSprite, StateDefine prevState, float vx, float vy)
 	:State(beginSprite, EndSprite)
 {
-	_Type = ATTACK_state;
+	_Type = SKILL_state;
 	_vx = vx;
 	_vy = vy;
 	_prevType = prevState;
@@ -22,12 +22,9 @@ AttackState::AttackState(int beginSprite, int EndSprite, StateDefine prevState, 
 		_prevType = STAND_State;
 	_endState = false;
 	changeTo = NONE;
-	_SwordBox.width = 1;
-	_SwordBox.height = 12;
-	_SwordBox.vy = 0;
 }
 
-int AttackState::HandleInput(StateInfo* info)
+int SkillState::HandleInput(StateInfo * info)
 {
 	//Prev to Stand
 	if (changeTo == STAND_State)
@@ -48,19 +45,11 @@ int AttackState::HandleInput(StateInfo* info)
 			info->frameToDraw.y = 19;
 			return JUMP_state;
 		}
-
-		//Duck
-		if (_prevType == DUCK_State)
-		{
-			info->frameToDraw.x = info->frameToDraw.y = 12;
-			return DUCK_State;
-		}
 	}
-
 	return 0;
 }
 
-void AttackState::UpdateVelocity(LPSprite sprite)
+void SkillState::UpdateVelocity(LPSprite sprite)
 {
 	if (_prevType == JUMP_state)
 	{
@@ -80,7 +69,7 @@ void AttackState::UpdateVelocity(LPSprite sprite)
 			else _vx = 0.5f;
 		}
 	}
-	
+
 	_countDelay += 1.0f;
 	if (_countDelay >= sprite->_animDelay)
 	{
@@ -91,11 +80,12 @@ void AttackState::UpdateVelocity(LPSprite sprite)
 			_endState = true;
 		}
 		_countDelay = 0;
-		
+
 	}
 }
 
-void AttackState::UpdateStatus(LPSprite sprite)
+
+void SkillState::UpdateStatus(LPSprite sprite)
 {
 	if (_prevType == JUMP_state)
 	{
@@ -112,7 +102,7 @@ void AttackState::UpdateStatus(LPSprite sprite)
 	}
 }
 
-void AttackState::UpdateCollision(LPSprite sprite, Wall* wall, Box Ryu)
+void SkillState::UpdateCollision(LPSprite sprite, Wall * wall, Box Ryu)
 {
 	if (_prevType != JUMP_state)
 		return;
@@ -140,33 +130,3 @@ void AttackState::UpdateCollision(LPSprite sprite, Wall* wall, Box Ryu)
 		}
 	}
 }
-
-Box AttackState::ToBoxSword(LPSprite sprite)
-{
-	if (sprite->FlipX == 1)
-		_SwordBox.x = (float)sprite->_X - 1;
-	else 
-		_SwordBox.x = (float)sprite->_X;
-	_SwordBox.vx = sprite->FlipX* 22.0f;
-	if (_prevType == DUCK_State)
-		_SwordBox.y = (float)sprite->_Y + 30 - 12;
-	else 
-		_SwordBox.y = (float)sprite->_Y + 30 - 7;
-	return _SwordBox;
-}
-
-Box AttackState::ToBox(LPSprite sprite)
-{
-	if (_prevType == DUCK_State)
-	{
-		Box tmp = State::ToBox(sprite);
-		tmp.height = 20;
-		tmp.y = (float)sprite->_Y + tmp.height;
-		return tmp;
-	}
-	else
-	{
-		return State::ToBox(sprite);
-	}
-}
-

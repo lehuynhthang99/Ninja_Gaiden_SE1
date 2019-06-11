@@ -7,7 +7,6 @@ typedef class AttackState* LPAttackState;
 class AttackState : public State
 {
 protected:
-	//int _flyingTime;
 	StateDefine _prevType, changeTo;
 	Box _SwordBox;
 	bool _endState;

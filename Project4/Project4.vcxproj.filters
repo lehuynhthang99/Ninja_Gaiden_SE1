@@ -103,6 +103,12 @@
     <Filter Include="Source Files\Object\Item">
       <UniqueIdentifier>{4dd4a554-1042-4506-9e52-6d3455257852}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Skill">
+      <UniqueIdentifier>{f49a33d2-854a-4f01-8b75-7dbc4dee190e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Skill">
+      <UniqueIdentifier>{df2de9fb-6465-4c79-adb1-5d3080956880}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -225,11 +231,23 @@
     <ClCompile Include="Item.cpp">
       <Filter>Source Files\Object\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Container.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScoreBoard.cpp">
       <Filter>Source Files\Original</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Source Files\Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="DartA.cpp">
+      <Filter>Source Files\Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="DartB.cpp">
+      <Filter>Source Files\Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillState.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -344,11 +362,23 @@
     <ClInclude Include="Item.h">
       <Filter>Header Files\Object\Item</Filter>
     </ClInclude>
-    <ClInclude Include="Container.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreBoard.h">
       <Filter>Header Files\Original</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Header Files\Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="DartA.h">
+      <Filter>Header Files\Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="DartB.h">
+      <Filter>Header Files\Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillState.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

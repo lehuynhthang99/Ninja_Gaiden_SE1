@@ -31,6 +31,14 @@ int RunState::HandleInput(StateInfo *info)
 		return JUMP_state;
 	}
 
+	//Skill
+	if (Key_Down(DIK_Z))
+	{
+		info->frameToDraw.x = 4;
+		info->frameToDraw.y = 6;
+		return SKILL_state;
+	}
+
 	//Stand
 	if (!Key_Down(DIK_LEFT) && !Key_Down(DIK_RIGHT))
 	{

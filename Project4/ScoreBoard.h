@@ -14,13 +14,14 @@ protected:
 	string stringLine[3];
 	RECT chaRect[256];
 public:
+	float _timer;
 	int _score, _bossHP;
 	ScoreBoard();
 	~ScoreBoard();
 	ScoreBoard(string Path);
 
 
-	void Update(int Stage, float Timer, int lives, int RyuMP);
+	void Update(int Stage, int lives, int RyuMP, bool TimeStop);
 	void Render(Camera camera, int RyuHP);
 	void ScoreBoardDelete();
 

@@ -7,6 +7,7 @@ using namespace std;
 
 enum ItemDefine
 {
+	NullSkill = 0,
 	LiveUp = 1,
 	PtsBonus_A = 2,
 	PtsBonus_B = 3,

@@ -13,6 +13,7 @@ enum StateDefine
 	ATTACK_state = 5,
 	CLIMB_state = 6,
 	STUN_state = 7,
+	SKILL_state = 8,
 };
 
 

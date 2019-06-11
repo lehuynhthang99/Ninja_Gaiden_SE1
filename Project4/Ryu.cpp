@@ -14,6 +14,8 @@ Ryu::~Ryu()
 
 Ryu::Ryu(string Path, int x, int y, int Width, int Height, int frameNumber, int animDelay, string fileName)
 {
+	_skillType = NO_skill;
+	skill = NULL;
 	sprite = Sprite(Path, x, y, Width, Height, frameNumber, animDelay);
 	tiles = Tiles(fileName, frameNumber);
 	state = new StandState(0, 0);
@@ -78,7 +80,6 @@ void Ryu::ChangeState()
 		break;
 	case ATTACK_state:
 		tmpState = state->_Type;
-		//tmpFlyingTime = state->GetFlyingTime();
 		vx = state->_vx;
 		vy = state->_vy;
 		delete state;
@@ -88,6 +89,27 @@ void Ryu::ChangeState()
 		delete state;
 		state = new ClimbState(info.frameToDraw.x, info.frameToDraw.y, info.RangeY.x, info.RangeY.y);
 		break;
+	case SKILL_state:
+		tmpState = state->_Type;
+		vx = state->_vx;
+		vy = state->_vy;
+		delete state;
+		state = new SkillState(info.frameToDraw.x, info.frameToDraw.y, tmpState, vx, vy);
+		if (_MP > 0 && !skill)
+		{
+			switch (_skillType)
+			{
+			case DartA_skill:
+				skill = new DartA("Resource/DartA/DartA.bmp", sprite._X, sprite._Y + 12, 10, 9, 2, 1, "Resource/DartA/DartA.xml", &sprite);
+				break;
+			case DartB_skill:
+				skill = new DartB("Resource/DartB/DartB.bmp", sprite._X, sprite._Y + 12, 18, 18, 2, 6, "Resource/DartB/DartB.xml", &sprite);
+				break;
+			default:
+				break;
+			}
+		}
+		
 	define:
 		break;
 	}
@@ -103,20 +125,7 @@ void Ryu::UpdateState()
 
 void Ryu::UpdateCollision(Wall* wall)
 {
-	/*float tmpnormalX, tmpnormalY;
-	float tmpCollisionTime = SweptAABB(this->ToBox(), wall, tmpnormalX, tmpnormalY);*/
 	state->UpdateCollision(&sprite, wall, this->ToBox());
-	/*if (tmpCollisionTime < 1)
-	{
-		if (_collisionTime == 1 || 
-			_collisionTime <= 0.0f && tmpCollisionTime > 0.0f || 
-			tmpCollisionTime > 0.0f && tmpCollisionTime < _collisionTime)
-		{
-			_collisionTime = tmpCollisionTime;
-			_normalX = tmpnormalX;
-			_normalY = tmpnormalY;
-		}
-	}*/
 }
 
 void Ryu::Update()
@@ -125,6 +134,16 @@ void Ryu::Update()
 	if (sprite._Y < -35) _died = true;
 	if (_invisible > 0)
 		_invisible--;
+	if (skill)
+	{
+		if (skill->_lifeSpan <= 0)
+		{
+			skill->SkillDelete();
+			delete skill;
+			skill = NULL;
+		}
+		else skill->Update(&sprite);
+	}
 }
 
 
@@ -135,6 +154,8 @@ void Ryu::Render(Camera camera)
 	if (_invisible != 0 && _invisible % 3 != 0)
 		return;
 	sprite.Render(camera, tiles.getRectLocation(state->_curSprite));
+	if (skill)
+		skill->Render(camera);
 }
 
 void Ryu::SetStartPos(float x, float y)
@@ -170,7 +191,11 @@ void Ryu::Remove()
 	if (state)
 		delete state;
 	tiles.TilesClear();
-
+	if (skill)
+	{
+		skill->SkillDelete();
+		delete skill;
+	}
 }
 
 StateDefine Ryu::GetStateType()
@@ -178,26 +203,21 @@ StateDefine Ryu::GetStateType()
 	return state->_Type;
 }
 
+LPSprite Ryu::GetSprite()
+{
+	return &sprite;
+}
+
 Box Ryu::ToBoxSword()
 {
-	/*Box tmp;
-
-	tmp.vx = sprite.FlipX* 22.0f;
-	tmp.vy = 0;
-	tmp.width = 1;
-	tmp.height = 12;
-	if (sprite.FlipX == 1)
-	{
-		tmp.x = (float)sprite._X - 3;
-		tmp.y = (float)sprite._Y + 30 - 7;
-	}
-	else
-	{
-		tmp.x = (float)sprite._X + 2;
-		tmp.y = (float)sprite._Y + 30 - 7;
-	}
-	return tmp;*/
 	return state->ToBoxSword(&sprite);
+}
+
+Box Ryu::ToSkillBox()
+{
+	if (skill)
+		return skill->ToBox();
+	return Box();
 }
 
 

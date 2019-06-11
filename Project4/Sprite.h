@@ -9,6 +9,7 @@ typedef class Sprite* LPSprite;
 #include "dxinput.h"
 #include "Collision.h"
 #include "Camera.h"
+#include "debug.h"
 
 
 class Sprite
@@ -16,10 +17,11 @@ class Sprite
 protected:
 	LPDIRECT3DTEXTURE9 _Image;
 	int _Width, _Height;
-	int _curFrame, _frameNumber;
+	int _curFrame;
 	D3DXMATRIX _renderMatrix;
 
 public:
+	int _frameNumber;
 	RECT rect;
 	float _X, _Y;
 	float FlipX;

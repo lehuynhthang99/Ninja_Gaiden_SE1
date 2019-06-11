@@ -14,11 +14,13 @@ vector<LPContainer> containers;
 vector<LPItem> items;
 
 Grid grid;
-float _timer;
+
+float _timeStop;
 
 
 int Game_Init(HWND hWnd)
 {
+	_timeStop = 0;
 	stage = Stage("Resource/Stage/StageInfo.txt");
 	scoreBoard = ScoreBoard("Resource/ScoreBoard/ascii_8x8.bmp");
 	//stage._stage+=2;
@@ -33,6 +35,10 @@ void Game_Run(HWND hWnd)
 	dimouse->Acquire();
 	Poll_Keyboard();
 	Poll_Mouse();
+
+	//TimeStop
+	if (_timeStop > 0)
+		_timeStop -= 0.01f;
 
 	//Ryu
 	if (!ryu._died) 
@@ -75,19 +81,6 @@ void Game_Run(HWND hWnd)
 				Box tmpSwordBox = ryu.ToBoxSword();
 				Box enemyBox = enemies[i]->ToBox();
 				float tmpcollision = SweptAABB(tmpSwordBox, enemyBox, normalX, normalY);
-				/*DebugOut((wchar_t*)L"tmpColli: %f %f %f\n", tmpcollision, normalX, normalY);
-				DebugOut((wchar_t*)L"tmpSwordBox: %f %f %f %f %f %f\n",
-					tmpSwordBox.x, tmpSwordBox.y, tmpSwordBox.vx, tmpSwordBox.vy, tmpSwordBox.width, tmpSwordBox.height);
-				DebugOut((wchar_t*)L"enemyBox: %d %f %f %f %f %f %f\n",
-					enemies[i]->_type, enemyBox.x, enemyBox.y, enemyBox.vx, enemyBox.vy, enemyBox.width, enemyBox.height);*/
-				/*if (enemies[i]->_type == SNIPERBULLET_stage1)
-				{
-					DebugOut((wchar_t*)L"tmpColli: %f %f %f\n", tmpcollision, normalX, normalY);
-					DebugOut((wchar_t*)L"tmpSwordBox: %f %f %f %f %f %f\n",
-						tmpSwordBox.x, tmpSwordBox.y, tmpSwordBox.vx, tmpSwordBox.vy, tmpSwordBox.width, tmpSwordBox.height);
-					DebugOut((wchar_t*)L"enemyBox: %d %f %f %f %f %f %f\n\n",
-						enemies[i]->_type, enemyBox.x, enemyBox.y, enemyBox.vx, enemyBox.vy, enemyBox.width, enemyBox.height);
-				}*/
 				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
 				{
 					enemies[i]->_isAttacked = true;
@@ -97,10 +90,13 @@ void Game_Run(HWND hWnd)
 					continue;
 				}
 			}
-			LPEnemy enemy;
-			enemy = enemies[i]->Update(&ryu);
-			if (enemy)
-				enemies.push_back(enemy);
+			if ((int)(_timeStop*10) % 10 == 0)
+			{
+				LPEnemy enemy;
+				enemy = enemies[i]->Update(&ryu);
+				if (enemy)
+					enemies.push_back(enemy);
+			}
 		}
 		else if (enemies[i]->_type < 0)
 			enemies[i]->_died = 0;
@@ -111,7 +107,8 @@ void Game_Run(HWND hWnd)
 	{
 		if (enemies[i]->_died == 0)
 		{
-			scoreBoard._score += enemies[i]->_score;
+			if (enemies[i]->_HP <= 0)
+				scoreBoard._score += enemies[i]->_score;
 			enemies[i]->EnemyDelete();
 			delete enemies[i];
 			enemies.erase(enemies.begin() + i);
@@ -212,10 +209,13 @@ void Game_Run(HWND hWnd)
 					ryu._MP += 10;
 					break;
 				case Dart_A:
+					ryu._skillType = DartB_skill;
 					break;
 				case Dart_B:
+					ryu._skillType = DartB_skill;
 					break;
 				case TimeStop:
+					_timeStop = 5;
 					break;
 				default:
 					break;
@@ -240,7 +240,7 @@ void Game_Run(HWND hWnd)
 	camera.Update(ryu.GetPosX());
 
 	//ScoreBoard
-	scoreBoard.Update(stage._stage, _timer, ryu._lives, ryu._MP);
+	scoreBoard.Update(stage._stage, ryu._lives, ryu._MP, false);
 
 	//start render
 	if (d3ddev == NULL)
@@ -314,6 +314,7 @@ void Game_End(HWND hWnd)
 
 	if (walls) delete[] walls;
 	grid.GridClear();
+	scoreBoard.ScoreBoardDelete();
 }
 
 void Change_Stage()
@@ -491,6 +492,8 @@ void Change_Stage()
 		}
 	}
 	enemiestxt.close();
+
+	scoreBoard._timer = 150;
 
 	//
 	grid.Output();
