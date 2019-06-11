@@ -53,5 +53,7 @@ public:
 	LPSprite GetSprite();
 	Box ToBoxSword();
 	Box ToSkillBox();
+	LPSkill GetSkill();
+	void KillSkill();
 };
 

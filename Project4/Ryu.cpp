@@ -95,15 +95,23 @@ void Ryu::ChangeState()
 		vy = state->_vy;
 		delete state;
 		state = new SkillState(info.frameToDraw.x, info.frameToDraw.y, tmpState, vx, vy);
-		if (_MP > 0 && !skill)
+		if (!skill)
 		{
 			switch (_skillType)
 			{
 			case DartA_skill:
-				skill = new DartA("Resource/DartA/DartA.bmp", sprite._X, sprite._Y + 12, 10, 9, 2, 1, "Resource/DartA/DartA.xml", &sprite);
+				if (_MP >= 3)
+				{
+					_MP -= 3;
+					skill = new DartA("Resource/DartA/DartA.bmp", sprite._X, sprite._Y + 12, 10, 9, 2, 1, "Resource/DartA/DartA.xml", &sprite);
+				}
 				break;
 			case DartB_skill:
-				skill = new DartB("Resource/DartB/DartB.bmp", sprite._X, sprite._Y + 12, 18, 18, 2, 6, "Resource/DartB/DartB.xml", &sprite);
+				if (_MP >= 5)
+				{
+					_MP -= 5;
+					skill = new DartB("Resource/DartB/DartB.bmp", sprite._X, sprite._Y + 12, 18, 18, 2, 6, "Resource/DartB/DartB.xml", &sprite);
+				}
 				break;
 			default:
 				break;
@@ -218,6 +226,18 @@ Box Ryu::ToSkillBox()
 	if (skill)
 		return skill->ToBox();
 	return Box();
+}
+
+LPSkill Ryu::GetSkill()
+{
+	return skill;
+}
+
+void Ryu::KillSkill()
+{
+	skill->SkillDelete();
+	delete skill;
+	skill = NULL;
 }
 
 

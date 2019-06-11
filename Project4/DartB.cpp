@@ -37,6 +37,15 @@ void DartB::UpdateVelocity(LPSprite RyuSprite)
 		tmpfloat = sqrt(_targetX*_targetX + _targetY * _targetY);
 		_targetX /= tmpfloat;
 		_targetY /= tmpfloat;
+		if (abs(_targetX) < sqrt(0.5f))
+		{
+			if (_targetX > 0)
+				_targetX = sqrt(0.5f);
+			else _targetX = -sqrt(0.5f);
+			if (_targetY > 0)
+				_targetY = sqrt(0.5f);
+			else _targetY = -sqrt(0.5f);
+		}
 	}
 	_vx = abs(_speed)*_targetX;
 	_vy = abs(_speed)*_targetY;

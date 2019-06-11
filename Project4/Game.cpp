@@ -75,19 +75,40 @@ void Game_Run(HWND hWnd)
 	{
 		if (enemies[i]->GetPosX() >= camera._X - 100 && enemies[i]->GetPosX() <= camera._X + SCREEN_WIDTH / SCALE * 1.0f + 100)
 		{
-			if (ryu.GetStateType() == ATTACK_state && !enemies[i]->_isAttacked && enemies[i]->_died == -1)
+			if (!enemies[i]->_isAttacked && enemies[i]->_died == -1)
 			{
-				float normalX, normalY;
-				Box tmpSwordBox = ryu.ToBoxSword();
-				Box enemyBox = enemies[i]->ToBox();
-				float tmpcollision = SweptAABB(tmpSwordBox, enemyBox, normalX, normalY);
-				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
+				if (ryu.GetStateType() == ATTACK_state)
 				{
-					enemies[i]->_isAttacked = true;
-					enemies[i]->_HP--;
-					if (enemies[i]->_type == BOSS_stage1)
-						scoreBoard._bossHP--;
-					continue;
+					float normalX, normalY;
+					Box tmpSwordBox = ryu.ToBoxSword();
+					Box enemyBox = enemies[i]->ToBox();
+					float tmpcollision = SweptAABB(tmpSwordBox, enemyBox, normalX, normalY);
+					if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
+					{
+						enemies[i]->_isAttacked = true;
+						enemies[i]->_HP--;
+						if (enemies[i]->_type == BOSS_stage1)
+							scoreBoard._bossHP--;
+						continue;
+					}
+				}
+				if (ryu.GetSkill())
+				{
+					float normalX, normalY;
+					Box tmpSkillBox = ryu.ToSkillBox();
+					Box enemyBox = enemies[i]->ToBox();
+					float tmpcollision = SweptAABB(tmpSkillBox, enemyBox, normalX, normalY);
+					if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f || OverlappedBox(tmpSkillBox, enemyBox))
+					{
+						enemies[i]->_isAttacked = true;
+						enemies[i]->_HP--;
+						if (enemies[i]->_type == BOSS_stage1)
+						{
+							scoreBoard._bossHP--;
+							ryu.KillSkill();
+						}
+						continue;
+					}
 				}
 			}
 			if ((int)(_timeStop*10) % 10 == 0)
@@ -147,11 +168,17 @@ void Game_Run(HWND hWnd)
 				Box tmpSwordBox = ryu.ToBoxSword();
 				Box containersBox = containers[i]->ToBox();
 				float tmpcollision = SweptAABB(tmpSwordBox, containersBox, normalX, normalY);
-				/*DebugOut((wchar_t*)L"tmpColli: %f %f %f\n", tmpcollision, normalX, normalY);
-				DebugOut((wchar_t*)L"tmpSwordBox: %f %f %f %f %f %f\n",
-					tmpSwordBox.x, tmpSwordBox.y, tmpSwordBox.vx, tmpSwordBox.vy, tmpSwordBox.width, tmpSwordBox.height);
-				DebugOut((wchar_t*)L"enemyBox: %d %f %f %f %f %f %f\n",
-					enemies[i]->_type, enemyBox.x, enemyBox.y, enemyBox.vx, enemyBox.vy, enemyBox.width, enemyBox.height);*/
+				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
+				{
+					containers[i]->_died = true;
+				}
+			}
+			if (!containers[i]->_died && ryu.GetSkill())
+			{
+				float normalX, normalY;
+				Box tmpSkillBox = ryu.ToSkillBox();
+				Box containersBox = containers[i]->ToBox();
+				float tmpcollision = SweptAABB(tmpSkillBox, containersBox, normalX, normalY);
 				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
 				{
 					containers[i]->_died = true;
