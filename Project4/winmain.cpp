@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "dxgraphics.h"
 #include "dxinput.h"
+#include "dxsound.h"
 #include "Game.h"
 
 LRESULT WINAPI WinProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -104,6 +105,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (!Init_Keyboard(hWnd))
 	{
 		MessageBox(hWnd, "Error Initializing Keyboard", "Error", MB_OK);
+		return 0;
+	}
+
+	if (!init_SoundManager(hWnd))
+	{
+		MessageBox(hWnd, "Error Initializing Sound", "Error", MB_OK);
 		return 0;
 	}
 

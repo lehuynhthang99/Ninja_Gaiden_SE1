@@ -15,6 +15,7 @@ typedef class Ryu* LPRyu;
 #include "SkillState.h"
 #include "DartA.h"
 #include "DartB.h"
+#include "dxsound.h"
 
 class Ryu
 {

@@ -20,11 +20,21 @@ float _timeStop;
 
 int Game_Init(HWND hWnd)
 {
+	addSound("Resource/Sounds/attack.wav");
+	addSound("Resource/Sounds/attacked.wav");
+	addSound("Resource/Sounds/boss-die.wav");
+	addSound("Resource/Sounds/boss-jump.wav");
+	addSound("Resource/Sounds/enemy-die.wav");
+	addSound("Resource/Sounds/jump.wav");
+	addSound("Resource/Sounds/pick-item.wav");
+	addSound("Resource/Sounds/stage3_1_bgm.wav");
+	addSound("Resource/Sounds/stage3_2_bgm.wav");
+	addSound("Resource/Sounds/stageboss_bgm.wav");
 	_timeStop = 0;
 	stage = Stage("Resource/Stage/StageInfo.txt");
 	scoreBoard = ScoreBoard("Resource/ScoreBoard/ascii_8x8.bmp");
-	//stage._stage+=2;
-	Change_Stage();
+	playSound(stage3_1_bgm, true, 1);
+	Change_Stage(0, 0);
 	return 1;
 }
 
@@ -41,7 +51,7 @@ void Game_Run(HWND hWnd)
 		_timeStop -= 0.01f;
 
 	//TimeOut
-	if (scoreBoard._timer <= 0)
+	if (scoreBoard._timer <= 0 && scoreBoard._bossHP != 0)
 		ryu._died = true;
 
 	//Ryu
@@ -63,7 +73,7 @@ void Game_Run(HWND hWnd)
 		ryu.Update();
 		if (stage._stage != 3 && ryu.GetPosX() > stage._gameWidth[stage._stage - 1] - 50)
 		{
-			Change_Stage();
+			Change_Stage(stage._stage - 1, stage._stage);
 			return;
 		}
 	}
@@ -71,14 +81,12 @@ void Game_Run(HWND hWnd)
 	{
 		if (ryu._lives > 0)
 		{
-			stage._stage--;
-			Change_Stage();
+			Change_Stage(stage._stage - 2, stage._stage - 1);
 			return;
 		}
 		else 
 		{
-			stage._stage = 0;
-			Change_Stage();
+			Change_Stage(stage._stage - 1, 0);
 			return;
 		}
 	}
@@ -124,7 +132,7 @@ void Game_Run(HWND hWnd)
 					}
 				}
 			}
-			if ((int)(_timeStop*10) % 10 == 0)
+			if ((int)(_timeStop*10) % 10 == 0 || enemies[i]->_HP <= 0)
 			{
 				LPEnemy enemy;
 				enemy = enemies[i]->Update(&ryu);
@@ -149,7 +157,6 @@ void Game_Run(HWND hWnd)
 		}
 		else i++;
 	}
-
 
 	if (ryu.GetStateType() != STUN_state && ryu._invisible == 0)
 		for (int i = 0; i < enemies.size(); i++)
@@ -228,6 +235,7 @@ void Game_Run(HWND hWnd)
 			Box itemsBox = items[i]->ToBox();
 			if (OverlappedBox(tmpRyuBox, itemsBox))
 			{
+				playSound(pick_item_sound);
 				switch (items[i]->_id)
 				{
 				case LiveUp:
@@ -249,7 +257,7 @@ void Game_Run(HWND hWnd)
 					ryu._MP += 10;
 					break;
 				case Dart_A:
-					ryu._skillType = DartB_skill;
+					ryu._skillType = DartA_skill;
 					break;
 				case Dart_B:
 					ryu._skillType = DartB_skill;
@@ -357,8 +365,9 @@ void Game_End(HWND hWnd)
 	scoreBoard.ScoreBoardDelete();
 }
 
-void Change_Stage()
+void Change_Stage(int prev, int now)
 {
+	stage._stage = now;
 	//clear
 	map.KillSprite();
 
@@ -388,6 +397,38 @@ void Change_Stage()
 	grid.GridClear();
 
 	////init
+	//playBGM
+	if (prev != now)
+	{
+		switch (prev)
+		{
+		case 0:
+			stopSound(stage3_1_bgm);
+			break;
+		case 1:
+			stopSound(stage3_2_bgm);
+			break;
+		case 2:
+			stopSound(stageboss_bgm);
+			break;
+		default:
+			break;
+		}
+		switch (now)
+		{
+		case 0:
+			playSound(stage3_1_bgm, true, 1);
+			break;
+		case 1:
+			playSound(stage3_2_bgm, true, 1);
+			break;
+		case 2:
+			playSound(stageboss_bgm, true, 1);
+			break;
+		default:
+			break;
+		}
+	}
 
 	//Grid
 	grid = Grid();
@@ -407,12 +448,6 @@ void Change_Stage()
 	camera = Camera(stage._gameWidth[stage._stage]);
 
 	//Ryu
-	/*if (ryu._died)
-	{
-		ryu.Remove(); 
-		ryu = Ryu("Resource/Ryu/Ryu.bmp", stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y, NULL, NULL, 24, 10, "Resource/Ryu/Ryu.xml");
-	}
-	else ryu.SetStartPos(stage._ryuPos[stage._stage].x, stage._ryuPos[stage._stage].y);*/
 	if (ryu._lives == 0 && ryu._died)
 	{
 		ryu.Remove();
@@ -545,4 +580,3 @@ void Change_Stage()
 	grid.Output();
 	stage._stage++;
 }
-

@@ -249,6 +249,15 @@
     <ClCompile Include="SkillState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DSutil.cpp">
+      <Filter>Source Files\DxFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="dxutil.cpp">
+      <Filter>Source Files\DxFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="dxsound.cpp">
+      <Filter>Source Files\DxFramework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -379,6 +388,15 @@
     </ClInclude>
     <ClInclude Include="SkillState.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DSutil.h">
+      <Filter>Header Files\DxFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="dxutil.h">
+      <Filter>Header Files\DxFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="dxsound.h">
+      <Filter>Header Files\DxFramework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

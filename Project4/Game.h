@@ -6,6 +6,7 @@
 #include "Sprite.h"  
 #include "dxgraphics.h"
 #include "dxinput.h"
+#include "dxsound.h"
 #include "Collision.h"
 #include "Map.h"
 #include "Ryu.h"
@@ -28,6 +29,7 @@
 #include "Container.h"
 #include "ScoreBoard.h"
 
+
 using namespace std;
 
 #define APPTITLE "Camera"
@@ -41,6 +43,4 @@ using namespace std;
 int Game_Init(HWND);
 void Game_Run(HWND);
 void Game_End(HWND);
-void Change_Stage();
-
-
+void Change_Stage(int, int);

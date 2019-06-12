@@ -32,6 +32,7 @@ void Ryu::ChangeState()
 	switch (_specialChange)
 	{
 	case STUN_state:
+		playSound(attacked_sound);
 		_HP--;
 		if (_HP == 0)
 			_died = true;
@@ -71,6 +72,8 @@ void Ryu::ChangeState()
 		state = new DuckState(info.frameToDraw.x, info.frameToDraw.y);
 		break;
 	case JUMP_state:
+		if (state->_vy == FLYING_TIME)
+			playSound(jump_sound);
 		//tmpFlyingTime = state->GetFlyingTime();
 		vx = state->_vx;
 		vy = state->_vy;
@@ -78,6 +81,7 @@ void Ryu::ChangeState()
 		state = new JumpState(info.frameToDraw.x, info.frameToDraw.y, vx, vy);
 		break;
 	case ATTACK_state:
+		playSound(attack_sound);
 		tmpState = state->_Type;
 		vx = state->_vx;
 		vy = state->_vy;

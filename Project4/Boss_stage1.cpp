@@ -48,6 +48,7 @@ void Boss_stage1::UpdateFrame()
 {
 	if (!_jump && (int)(_countDelay / (sprite._animDelay*1.75)) >= 10)
 	{
+		playSound(boss_jump_sound);
 		_jump = true;
 		_countDelay = 0;
 		_curSprite = 1;
@@ -98,11 +99,11 @@ LPEnemy Boss_stage1::Update(Ryu * ryu)
 	if (_HP == 0)
 	{
 		_HP--;
-		_died = 20;
+		_died = 400;
 	}
 	if (_died != -1)
 	{
-		Enemy::DiedUpdate();
+		DiedUpdate();
 		return NULL;
 	}
 	UpdateVelocity(ryu);
@@ -114,6 +115,56 @@ LPEnemy Boss_stage1::Update(Ryu * ryu)
 	LPEnemy bullet = new BossBullet_stage1(_Path, sprite._X + 10 * sprite.FlipX, sprite._Y + 3, NULL, NULL, 3, 10,
 		_fileName, sprite.FlipX);
 	return bullet;
+}
+
+void Boss_stage1::DiedUpdate()
+{
+	if (_died < 400)
+	{
+		_countDelay++;
+		if (_countDelay >= 5)
+		{
+			diedcurSprite++;
+			_countDelay = 0;
+		}
+		if (diedcurSprite >= 2)
+			diedcurSprite = 0;
+		DebugOut((wchar_t*)L"diedcurSprite: %d\n", diedcurSprite);
+		_died--;
+	}
+	else
+	{
+		stopSound(stageboss_bgm);
+		playSound(boss_died_sound);
+		diedSprite = Sprite("Resource/Enemies/Boss_died.bmp", sprite._X, sprite._Y, NULL, NULL, 2, 10);
+		diedTiles = Tiles("Resource/Enemies/Boss_died.xml", 2);
+		diedcurSprite = 0;
+		_countDelay = 0;
+		_died--;
+	}
+}
+
+void Boss_stage1::EnemyDelete()
+{
+	diedSprite.KillSprite();
+	diedTiles.TilesClear();
+	Enemy::EnemyDelete();
+}
+
+void Boss_stage1::DiedRender(Camera camera)
+{
+	sprite.Render(camera, tiles.getRectLocation(_curSprite));
+	RECT tmp = diedTiles.getRectLocation(diedcurSprite);
+	D3DXVECTOR3 center = D3DXVECTOR3((tmp.right - tmp.left) / 2.0f, (tmp.bottom - tmp.top) / 2.0f, 0);
+	diedSprite._X = sprite._X - 15;
+	diedSprite._Y = sprite._Y + 30;
+	diedSprite.Render(camera, diedTiles.getRectLocation(diedcurSprite), center);
+	diedSprite._X = sprite._X + 10;
+	diedSprite._Y = sprite._Y + 20;
+	diedSprite.Render(camera, diedTiles.getRectLocation(diedcurSprite), center);
+	diedSprite._X = sprite._X;
+	diedSprite._Y = sprite._Y + 10;
+	diedSprite.Render(camera, diedTiles.getRectLocation(diedcurSprite), center);
 }
 
 Box Boss_stage1::ToBox()
@@ -129,7 +180,7 @@ void Boss_stage1::Render(Camera camera)
 		Enemy::Render(camera);
 		return;
 	}
-	else Enemy::DiedRender(camera);
+	else DiedRender(camera);
 }
 
 Boss_stage1::~Boss_stage1()

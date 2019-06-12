@@ -11,6 +11,9 @@ protected:
 	bool _bulletAdd, _jump, _shoot;
 	int _countBullet, _startPos;
 	string _Path, _fileName;
+	Sprite diedSprite;
+	Tiles diedTiles;
+	int diedcurSprite;
 public:
 	Boss_stage1();
 	Boss_stage1(string Path, int x, int y, int Width, int Height, int frameNumber, int animDelay, string fileName);
@@ -19,6 +22,10 @@ public:
 	void UpdatePosition();
 	void UpdateFrame();
 	LPEnemy Update(Ryu* ryu);
+	void DiedUpdate();
+	void EnemyDelete();
+	void DiedRender(Camera camera);
+
 
 	Box ToBox();
 

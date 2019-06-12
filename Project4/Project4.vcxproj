@@ -31,9 +31,12 @@
     <ClCompile Include="DartA.cpp" />
     <ClCompile Include="DartB.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="DSutil.cpp" />
     <ClCompile Include="DuckState.cpp" />
     <ClCompile Include="dxgraphics.cpp" />
     <ClCompile Include="dxinput.cpp" />
+    <ClCompile Include="dxsound.cpp" />
+    <ClCompile Include="dxutil.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -79,9 +82,12 @@
     <ClInclude Include="DartA.h" />
     <ClInclude Include="DartB.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="DSutil.h" />
     <ClInclude Include="DuckState.h" />
     <ClInclude Include="dxgraphics.h" />
     <ClInclude Include="dxinput.h" />
+    <ClInclude Include="dxsound.h" />
+    <ClInclude Include="dxutil.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grid.h" />
@@ -174,7 +180,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;dsound.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

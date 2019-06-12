@@ -77,6 +77,7 @@ void Enemy::DiedUpdate()
 	}
 	else
 	{
+		playSound(enemy_die_sound);
 		float a, b;
 		a = sprite._X;
 		b = sprite._Y;
