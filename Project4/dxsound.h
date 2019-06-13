@@ -18,6 +18,8 @@ enum SoundType
 	stage3_2_bgm = 8,
 	stageboss_bgm = 9,
 	pause_sound = 10,
+	score_count_sound = 11,
+	skill_sound = 12,
 };
 
 extern CSoundManager* soundManager;

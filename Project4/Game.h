@@ -44,3 +44,4 @@ int Game_Init(HWND);
 void Game_Run(HWND);
 void Game_End(HWND);
 void Change_Stage(int, int);
+void Update();

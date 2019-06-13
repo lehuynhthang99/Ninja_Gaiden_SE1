@@ -34,9 +34,12 @@ void ScoreBoard::Update(int Stage, int lives, int RyuMP, bool TimeStop)
 		_timer -= 0.01f;
 	else if (_timer>0)
 	{
-		_timer = (int)_timer - 1;
-		_score += 1000;
+		playSound(score_count_sound);
+		_timer = _timer - 0.25f;
+		_score += 250;
 	}
+	if (_timer < 0)
+		_timer = 0;
 	char scoreLine[30];
 	sprintf_s(scoreLine, "SCORE-%06d STAGE-3-%d", _score, Stage);
 	stringLine[0] = scoreLine;

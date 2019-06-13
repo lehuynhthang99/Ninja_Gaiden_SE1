@@ -2,6 +2,7 @@
 
 #include "Sprite.h"
 #include "Skill.h"
+#include "dxsound.h"
 
 using namespace std;
 

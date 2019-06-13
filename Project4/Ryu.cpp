@@ -105,6 +105,7 @@ void Ryu::ChangeState()
 			case DartA_skill:
 				if (_MP >= 3)
 				{
+					playSound(skill_sound);
 					_MP -= 3;
 					skill = new DartA("Resource/DartA/DartA.bmp", sprite._X, sprite._Y + 12, 10, 9, 2, 1, "Resource/DartA/DartA.xml", &sprite);
 				}
@@ -112,6 +113,7 @@ void Ryu::ChangeState()
 			case DartB_skill:
 				if (_MP >= 5)
 				{
+					playSound(skill_sound);
 					_MP -= 5;
 					skill = new DartB("Resource/DartB/DartB.bmp", sprite._X, sprite._Y + 12, 18, 18, 2, 4, "Resource/DartB/DartB.xml", &sprite);
 				}
@@ -257,5 +259,3 @@ void Ryu::KillSkill()
 	delete skill;
 	skill = NULL;
 }
-
-
