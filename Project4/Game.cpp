@@ -30,6 +30,7 @@ int Game_Init(HWND hWnd)
 	addSound("Resource/Sounds/stage3_1_bgm.wav");
 	addSound("Resource/Sounds/stage3_2_bgm.wav");
 	addSound("Resource/Sounds/stageboss_bgm.wav");
+	addSound("Resource/Sounds/pause.wav");
 	_timeStop = 0;
 	stage = Stage("Resource/Stage/StageInfo.txt");
 	scoreBoard = ScoreBoard("Resource/ScoreBoard/ascii_8x8.bmp");
@@ -45,7 +46,7 @@ void Game_Run(HWND hWnd)
 	dimouse->Acquire();
 	Poll_Keyboard();
 	Poll_Mouse();
-
+	
 	//TimeStop
 	if (_timeStop > 0)
 		_timeStop -= 0.01f;
@@ -321,9 +322,6 @@ void Game_Run(HWND hWnd)
 	}
 
 	d3ddev->Present(NULL, NULL, NULL, NULL);
-
-	if (KEY_DOWN(VK_ESCAPE))
-		PostMessage(hWnd, WM_DESTROY, 0, 0);
 }
 	
 

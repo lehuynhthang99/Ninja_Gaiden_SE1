@@ -6,6 +6,8 @@
 #include "dxsound.h"
 #include "Game.h"
 
+bool paused = false;
+
 LRESULT WINAPI WinProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -14,6 +16,12 @@ LRESULT WINAPI WinProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		Game_End(hWnd);
 		PostQuitMessage(0);
 		return 0;
+	case WM_CHAR:
+		if (wParam == 'p')
+		{
+			playSound(pause_sound);
+			paused = !paused;
+		}
 	}
 	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
@@ -136,7 +144,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		else Game_Run(hWnd); //game process
+		else if (KEY_DOWN(VK_ESCAPE))
+			PostMessage(hWnd, WM_DESTROY, 0, 0); 
+		else if (!paused)
+			Game_Run(hWnd); //game process
 
 	}
 	return msg.wParam;
