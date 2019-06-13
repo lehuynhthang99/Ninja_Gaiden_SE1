@@ -29,7 +29,7 @@ void Boss_stage1::UpdateVelocity(Ryu * ryu)
 	if (_jump)
 	{
 		_vy -= 0.1f;
-		_vx = sprite.FlipX*2.0f;
+		_vx = sprite.FlipX*2.1f;
 	}
 }
 

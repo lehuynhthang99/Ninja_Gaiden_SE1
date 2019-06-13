@@ -39,13 +39,16 @@ void ScoreBoard::Update(int Stage, int lives, int RyuMP, bool TimeStop)
 		_score += 250;
 	}
 	if (_timer < 0)
+	{
 		_timer = 0;
+		stopSound(score_count_sound);
+	}
 	char scoreLine[30];
 	sprintf_s(scoreLine, "SCORE-%06d STAGE-3-%d", _score, Stage);
 	stringLine[0] = scoreLine;
 	sprintf_s(scoreLine, "TIMER-%03d    NINJA-", (int)ceil(_timer));
 	stringLine[1] = scoreLine;
-	sprintf_s(scoreLine, "P-%02d  -%02d    ENEMY-", lives, RyuMP);
+	sprintf_s(scoreLine, "P-%01d MP-%02d    ENEMY-", lives, RyuMP);
 	stringLine[2] = scoreLine;
 }
 

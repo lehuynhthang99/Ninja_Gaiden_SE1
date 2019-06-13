@@ -39,7 +39,7 @@ int Game_Init(HWND hWnd)
 	_timeStop = 0;
 	stage = Stage("Resource/Stage/StageInfo.txt");
 	scoreBoard = ScoreBoard("Resource/ScoreBoard/ascii_8x8.bmp");
-	SpriteGameOver = Sprite("Resource/GameOver.bmp", 0, 0, 148, 51, 1, 0);
+	SpriteGameOver = Sprite("Resource/GameOver.bmp", 0, 0, 148, 60, 1, 0);
 	GameOver = true;
 	Change_Stage(0, 0);
 	GameOver = false;
@@ -80,7 +80,7 @@ void Game_Run(HWND hWnd)
 			break;
 		}
 		SpriteGameOver._X = camera._X + 125;
-		SpriteGameOver._Y = camera._Y - 120;
+		SpriteGameOver._Y = camera._Y - 135;
 	}
 
 	//start render
@@ -399,7 +399,7 @@ void Update()
 			ryu.UpdateCollision(wallCollision_tmp[i]);
 		}
 		ryu.Update();
-		if (stage._stage != 3 && ryu.GetPosX() > stage._gameWidth[stage._stage - 1] - 50)
+		if (stage._stage != 3 && ryu.GetPosX() > stage._gameWidth[stage._stage - 1] - 20)
 		{
 			Change_Stage(stage._stage - 1, stage._stage);
 			return;
@@ -516,7 +516,7 @@ void Update()
 				Box tmpSwordBox = ryu.ToBoxSword();
 				Box containersBox = containers[i]->ToBox();
 				float tmpcollision = SweptAABB(tmpSwordBox, containersBox, normalX, normalY);
-				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f)
+				if (normalX != 0.0f || normalY != 0.0f || tmpcollision < 1.0f || OverlappedBox(tmpSwordBox, containersBox))
 				{
 					containers[i]->_died = true;
 				}
