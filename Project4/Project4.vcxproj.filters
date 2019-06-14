@@ -246,9 +246,6 @@
     <ClCompile Include="DartB.cpp">
       <Filter>Source Files\Object\Skill</Filter>
     </ClCompile>
-    <ClCompile Include="SkillState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DSutil.cpp">
       <Filter>Source Files\DxFramework</Filter>
     </ClCompile>
@@ -257,6 +254,9 @@
     </ClCompile>
     <ClCompile Include="dxsound.cpp">
       <Filter>Source Files\DxFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillState.cpp">
+      <Filter>Source Files\Original\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -386,9 +386,6 @@
     <ClInclude Include="DartB.h">
       <Filter>Header Files\Object\Skill</Filter>
     </ClInclude>
-    <ClInclude Include="SkillState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DSutil.h">
       <Filter>Header Files\DxFramework</Filter>
     </ClInclude>
@@ -397,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="dxsound.h">
       <Filter>Header Files\DxFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillState.h">
+      <Filter>Header Files\Original\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

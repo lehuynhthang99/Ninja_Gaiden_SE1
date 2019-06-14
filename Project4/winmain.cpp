@@ -145,7 +145,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			DispatchMessage(&msg);
 		}
 		else if (KEY_DOWN(VK_ESCAPE))
-			PostMessage(hWnd, WM_DESTROY, 0, 0); 
+			PostMessage(hWnd, WM_DESTROY, 0, 0);
 		else if (!paused)
 			Game_Run(hWnd); //game process
 

@@ -5,7 +5,7 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 //-----------------------------------------------------------------------------
-#pragma warning(disable : 4996).
+#pragma warning(disable : 4996)
 #ifndef STRICT
 #define STRICT
 #endif // !STRICT

@@ -4,7 +4,7 @@
 
 Grid::Grid()
 {
-	_cellRows = 8;
+	_cellRows = 10;
 	_cellCols = 74;
 
 	Wall_Cells = new vector<Wall*>*[_cellRows];

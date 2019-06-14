@@ -238,7 +238,6 @@ void Change_Stage(int prev, int now)
 	camera = Camera(stage._gameWidth[stage._stage]);
 
 	//Ryu
-	//if (ryu._lives == 0 && ryu._died)
 	if (GameOver)
 	{
 		ryu.Remove();
@@ -409,7 +408,7 @@ void Update()
 	{
 		if (ryu._lives > 0)
 		{
-			Change_Stage(stage._stage - 2, stage._stage - 1);
+			Change_Stage(stage._stage - 1, stage._stage - 1);
 			return;
 		}
 		else
