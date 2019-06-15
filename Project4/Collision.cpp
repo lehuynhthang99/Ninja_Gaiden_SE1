@@ -76,13 +76,13 @@ float SweptAABB(Box box1, Box box2, float &normal_x, float &normal_y)
 		{
 			if (xInvEntry < 0)
 			{
-				//right
+				//right box2
 				normal_x = 1.0f;
 				normal_y = 0;
 			}
 			else if (xInvEntry > 0)
 			{
-				//left
+				//left box2
 				normal_x = -1.0f;
 				normal_y = 0;
 			}
@@ -104,13 +104,13 @@ float SweptAABB(Box box1, Box box2, float &normal_x, float &normal_y)
 		{
 			if (yInvEntry < 0)
 			{
-				//Top
+				//Top box2
 				normal_x = 0;
 				normal_y = 1.0f;
 			}
 			else if (yInvEntry > 0)
 			{
-				//Bottom
+				//Bottom box2
 				normal_x = 0;
 				normal_y = -1.0f;
 			}

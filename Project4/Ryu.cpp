@@ -142,6 +142,8 @@ void Ryu::UpdateCollision(Wall* wall)
 
 void Ryu::Update()
 {
+	if (_MP > 99)
+		_MP = 99;
 	state->UpdateStatus(&sprite);
 	if (sprite._Y < -35) _died = true;
 	if (_invisible > 0)
